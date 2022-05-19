@@ -1,8 +1,42 @@
-import React from 'react'
+import  React, { useState } from "react"
 import Navbar from '../components/Navbar'
 
+import {Link}  from "react-router-dom"
+ import axios  from "axios"
+
+import { useNavigate } from "react-router-dom"
 const Login = () => {
+  const  navigate =useNavigate()
+  const [user,setUser] = useState({
+     
+      email:"",
+      password:""
+  })
+
+  const handleChange =e=>{
+      const{id,value} =e.target
+
+      setUser({
+          ...user,
+          [id]:value,
+     
+      })
+  }
+
+
+  const login  =() =>{
+      axios.post("http://localhost:1020/login",user)
+      .then(res=>{alert("login successful ")
+         
+              navigate("/")
+          }
+         
+      
+      )
+  }
+
   return (
+    
     <div>
       <Navbar/>
       <div className='signup_page_body' >
@@ -12,22 +46,20 @@ const Login = () => {
   </div>
   <form id="form" class="form">
     <div class="form-control">
-      <label for="username">Username</label>
-      <input type="text" placeholder="" id="username" />
-      {/* <i class="fas fa-check-circle"></i>
-      <i class="fas fa-exclamation-circle"></i> */}
+      <label for="username">Email</label>
+      <input type="email"  id="email" value={user.email} placeholder="Enter Your email" onChange={handleChange} />
       <small>Error message</small>
     </div>
-
     <div class="form-control">
       <label for="username">Password</label>
-      <input type="password" placeholder="" id="password" />
-      {/* <i class="fas fa-check-circle"></i>
-      <i class="fas fa-exclamation-circle"></i> */}
+      <input type="password"  id="password" value={user.password} placeholder="Enter Your password" onChange={handleChange} />
       <small>Error message</small>
     </div>
  
     <button>LogIn</button>
+    <br />
+    <label className="label" htmlFor="">Don't have an account?</label>
+        <Link className="link" to="/Signup">Register</Link>
   </form>
 </div>
       

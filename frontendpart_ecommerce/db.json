@@ -29,5 +29,13 @@
       "id": 4
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "name": "summer collection fshop  Varanga ",
+      "image": "https://assets.myntassets.com/h_1440,q_90,w_1080/v1/assets/images/13764318/2021/4/7/c6a16eb7-833d-4df2-8e0e-cb694a8a83e51617792817180-Varanga-Peach-Bandhani-Printed-Embroidered-Kurta-69516177928-1.jpg",
+      "price": "425",
+      "discount": "50",
+      "id": 1
+    }
+  ]
 }

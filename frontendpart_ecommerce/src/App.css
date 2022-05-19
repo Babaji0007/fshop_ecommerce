@@ -581,7 +581,7 @@ transform: scale(1.05) translateY(-3px);
 
 .signup_page_body{
   box-sizing: border-box;
-  /* background-color: #0f0f0f; */
+  background-color: #fbdbdb;
   font-family: "Open Sans", sans-serif;
   display: flex;
   align-items: center;
