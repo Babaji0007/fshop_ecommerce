@@ -1,0 +1,54 @@
+.navbar{
+    background-color: black;
+    height: 50px;
+    display: flex;
+    color: whitesmoke;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+  }
+  .navbar>div{
+    display: flex;
+    color: #fff;
+    gap: 30px;
+   margin-left: 20px;
+   margin-right: 20px;
+  }
+  .navbar>div>p{
+    cursor: pointer;
+    color: #fff;
+  }
+  span{color: aqua; font-size: larger; font-family: Georgia, 'Times New Roman', Times, serif;}
+  .navbar_search{
+    border: none;
+    height: 22px;
+     color: #fff;
+    outline: none;
+  }
+  .navbar_search_icon_div{
+    /* border: 1px solid red; */
+    color: black;
+    height:25px;
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+   
+  }
+  .navbar_cart_icon_div{
+    
+     height:25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-top: 15px;
+  cursor: pointer;
+
+
+  }
+  
+  
+  
