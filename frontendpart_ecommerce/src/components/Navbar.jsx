@@ -22,8 +22,9 @@ const Navbar = () => {
   const getData=()=>{
     axios.get(`http://localhost:2100/cart`).then((res)=>{
       setData(res.data)
-      
+     
     })
+    
   }
   return (
     <div className='navbar'>

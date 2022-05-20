@@ -28,7 +28,7 @@ const Signup = () => {
       
       if(name && email  && password ){
          
-          axios.post("http://localhost:1020/register",user).then(res=>{
+          axios.post("https://beckendfshop.herokuapp.com/register",user).then((res)=>{
               alert("register succesfull")
             navigate("/Login")    
       })
@@ -64,7 +64,7 @@ const Signup = () => {
       <small>Error message</small>
     </div>
 
-    <button>Submit</button>
+    <button onClick={register} >Register</button>
     <br />
             <br />
             <label className="label" htmlFor="">Already have account ?</label>

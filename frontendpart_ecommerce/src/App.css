@@ -286,6 +286,7 @@ margin: auto; */
   height: 550px
 }
 .productdetail3{
+  
   display: flex;
    justify-content: space-between; 
 }
@@ -298,6 +299,7 @@ margin: auto; */
   background-color: #68d9f9;
   border: none;
   margin-right: 10%;
+  cursor: pointer;
 }
 .buynow{
   padding: 15px 20px 15px 20px;

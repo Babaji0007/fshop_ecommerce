@@ -20,7 +20,7 @@ export const  ProductDetail  = () =>{
     console.log(data)
     const {id} = useParams()
     useEffect(() => {
-      axios.get(`http://localhost:2100/Product/${id}`)
+      axios.get(`https://beckendfshop.herokuapp.com/women/${id}`)
       .then((res) => {
         setData(res.data)
         disPatch(addData(res.data))
@@ -31,7 +31,7 @@ export const  ProductDetail  = () =>{
 
 
     const postData=()=>{
-      axios.post(`http://localhost:2100/cart`,rstore).then(()=>{
+      axios.post(`https://beckendfshop.herokuapp.com/cart`,rstore).then(()=>{
           alert("data added")
       })
   }
@@ -65,12 +65,12 @@ export const  ProductDetail  = () =>{
 
 
             <div className='productdetail5'>
-                <p className='productdetailname'>{data.name}</p>
+                <p className='productdetailname'>{data.title}</p>
                 {/* this is for the detail div  */}
                 <div className='pricediscountdiv'>
                   <div> <h1 className='priceh1'>₹{data.price}</h1></div>
-                  <div className='line-thorughdiv'> <p className='line-through'>₹{ap}</p></div>
-                  <div className='discountpdiv'>  <p className='discountp'>{data.discount}%off</p>
+                  {/* <div className='line-thorughdiv'> <p className='line-through'>₹{ap}</p></div> */}
+                  <div className='discountpdiv'>  <p className='discountp'>{data.offer}%off</p>
                   </div>
                 </div>
                 

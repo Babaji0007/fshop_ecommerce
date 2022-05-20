@@ -35,7 +35,7 @@ const dispatch = useDispatch()
 console.log("Totalprice",count)
 
 const getData=()=>{
-  axios.get(`http://localhost:2100/cart`).then((e)=>{
+  axios.get(`https://beckendfshop.herokuapp.com/cart`).then((e)=>{
     var sum  =0;
     setData(e.data)
     dispatch(addData(e.data))
@@ -56,25 +56,25 @@ const getData=()=>{
 console.log("data",data)
 
 const deleteData=(id)=>{
-  axios.delete(`http://localhost:2100/cart/${id}`).then(()=>{
+  axios.delete(`https://beckendfshop.herokuapp.com/cart/${id}`).then(()=>{
     getData()
   })
 }
-const increment = (e) => {
-  e.quantity++;
-  axios.patch(`http://localhost:8080/cart/${e.id}`, e).then(() => {
-    getData()
-  })
-}
-const decrement = (e) => {
-  e.quantity--;
-  if (!e.quantity) {
-    deleteData(e.id)
-  }
-  axios.patch(`http://localhost:8080/cart/${e.id}`, e).then(() => {
-    getData()
-  })
-}
+// const increment = (e) => {
+//   e.quantity++;
+//   axios.patch(`https://beckendfshop.herokuapp.com/cart/${e.id}`, e).then(() => {
+//     getData()
+//   })
+// }
+// const decrement = (e) => {
+//   e.quantity--;
+//   if (!e.quantity) {
+//     deleteData(e.id)
+//   }
+//   axios.patch(`http://localhost:8080/cart/${e.id}`, e).then(() => {
+//     getData()
+//   })
+// }
 
  
  
@@ -107,7 +107,7 @@ const decrement = (e) => {
        <div className="buttonforcheckout">
          <div>
        <button className="remove" onClick={()=>{
-     deleteData(data.id)
+     deleteData(data._id)
       }}>Remove</button>
       </div>
       <div>

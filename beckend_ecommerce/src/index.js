@@ -1,28 +1,27 @@
 //mongodb+srv://rahul:<password>@cluster0.ojidj.mongodb.net/test
 const express  = require("express");
-// const cors = require("cors")
-
-
+const cors = require("cors")
+require("dotenv").config()
+const port=process.env.PORT||2200
 const app = express();
 app.use(express.json());
-// app.use(cors())
+app.use(cors())
 const connect  = require("./configs/db")
-
-// const registerController = require("./Controller/register.controller");
-// const loginController = require("./Controller/login.controller");
 
 const menController  = require("./controllers/menProducts")
 const womenController  = require("./controllers/womenProducts")
-
+const {register,login}=require("./controllers/auth")
+const CartController  = require("./controllers/cartProducts")
+app.post("/register",register)
+app.post ("/login",login)
 app.use("/women",womenController)
-// app.use("/register", registerController);
-// app.use("/login", loginController);
 app.use("/men",menController)
+app.use("/cart",CartController)
 
-app.listen(2100,async function(){
+app.listen(port,async function(){
     try {
         await connect()
-        console.log("Port 2100 is working fine")
+        console.log(`Port ${port} is working fine`)
     } catch (error) {
         console.log(error.message)
     }

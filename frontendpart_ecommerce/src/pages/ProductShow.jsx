@@ -19,7 +19,7 @@ const navigate=useNavigate()
     },[])
     // we r fetching data using this function
     const getData=()=>{
-        axios.get("http://localhost:2100/Product").then((res)=>{
+        axios.get("https://beckendfshop.herokuapp.com/women").then((res)=>{
         dispatch(addTodo(res.data))
         })
     }
@@ -30,7 +30,7 @@ const navigate=useNavigate()
 
     // we r deleting data using this function
     const handleDelete=(id)=>{
-      axios.delete(`http://localhost:2100/Product/${id}`).then(()=>{
+      axios.delete(`https://beckendfshop.herokuapp.com/women/${id}`).then(()=>{
           dispatch(delTodo(id))
           getData()
       })
@@ -126,7 +126,7 @@ const handleSort =(sort,value)=>{
                 }
               }).map((e)=>{
                   return <div key={e.id} className="showdiv" onClick={()=>{
-                    navigate(`/product/${e.id}`)
+                    navigate(`/product/${e._id}`)
                   }} >
 
                     {/* <div className="offer">
@@ -143,7 +143,7 @@ const handleSort =(sort,value)=>{
                       <div className="addtocartbutton"><button className="button-62">See Details</button></div>
                     </div>
                     <div className="offer">
-                      <button className="offerbutton">{e.discount}%Off</button>
+                      <button className="offerbutton">{e.offer}%Off</button>
                     </div>
                     </div>
                       

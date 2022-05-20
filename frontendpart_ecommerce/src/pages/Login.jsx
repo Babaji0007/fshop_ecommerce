@@ -5,7 +5,10 @@ import {Link}  from "react-router-dom"
  import axios  from "axios"
 
 import { useNavigate } from "react-router-dom"
+
+
 const Login = () => {
+ 
   const  navigate =useNavigate()
   const [user,setUser] = useState({
      
@@ -25,7 +28,7 @@ const Login = () => {
 
 
   const login  =() =>{
-      axios.post("http://localhost:1020/login",user)
+      axios.post("https://beckendfshop.herokuapp.com/login",user)
       .then(res=>{alert("login successful ")
          
               navigate("/")
@@ -56,7 +59,7 @@ const Login = () => {
       <small>Error message</small>
     </div>
  
-    <button>LogIn</button>
+    <button onClick= {login}>LogIn</button>
     <br />
     <label className="label" htmlFor="">Don't have an account?</label>
         <Link className="link" to="/Signup">Register</Link>
