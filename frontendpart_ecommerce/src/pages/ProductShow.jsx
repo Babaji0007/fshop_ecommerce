@@ -24,19 +24,6 @@ const navigate=useNavigate()
         })
     }
     
-
-
-
-
-    // we r deleting data using this function
-    const handleDelete=(id)=>{
-      axios.delete(`https://beckendfshop.herokuapp.com/women/${id}`).then(()=>{
-          dispatch(delTodo(id))
-          getData()
-      })
-    }
-
-
     const [change,setChange] =useState(false)
 
 const handleSort =(sort,value)=>{
@@ -72,12 +59,12 @@ const handleSort =(sort,value)=>{
   
       };
       if(sort === 'asc' && value==='discount'){
-        todos.sort((a,b)=> a.discount-b.discount)
+        todos.sort((a,b)=> a.offer-b.offer)
         setChange(!change)
       };
 
     if(sort === 'dsc' && value==='discount'){
-        todos.sort((a,b)=> b.discount-a.discount)
+        todos.sort((a,b)=> b.offer-a.offer)
         setChange(!change)
       };  
       
@@ -88,7 +75,8 @@ const handleSort =(sort,value)=>{
     <>
     <Navbar/>
  <br />
- <br />
+
+ <div className='product_topbar'style={{display:"flex"}} >
  <div className='product_search_icon_div' >
         <input className='input1'  type="text" placeholder='search' 
         onChange={(event)=>{
@@ -96,15 +84,7 @@ const handleSort =(sort,value)=>{
           }}
         
         /><SearchIcon/>
-        
         </div>
-
- {/* <input className="input1" type="text" placeholder="You can search product"
-       onChange={(event)=>{
-       setSeacrh(event.target.value)
-       }}/> */}
-      {/* <br /> */}
-       
         <button className="button-62" onClick={()=>{handleSort('asc','price')}} >Low to High Price</button>
         <button className="button-62" onClick={()=>{handleSort('dsc','price')}} >High to Low Price</button>
         <button className="button-62" onClick={()=>{handleSort('asc','name')}} >Sort By Name A-Z</button>
@@ -112,46 +92,47 @@ const handleSort =(sort,value)=>{
         <button className="button-62" onClick={()=>{handleSort('asc','discount')}} >Sort By Offer(L-H)</button>
         <button className="button-62" onClick={()=>{handleSort('dsc','discount')}} >Sort By Offer (H-L)</button>
         <br />
-        <br /><br />
+        </div>
       <hr />
     
-    <div className="productdiv">
+    <div className="productShow_container">
           {
               todos.filter((e)=>{
                 if(search===""){
                   return e
                 }
-                else if(e.name.toLowerCase().includes(search.toLowerCase())){
+                else if(e.title.toLowerCase().includes(search.toLowerCase())){
                  return e
                 }
               }).map((e)=>{
-                  return <div key={e.id} className="showdiv" onClick={()=>{
+                let ratings=Math.floor(Math.random() * 5) + 1;
+                let buyers=Math.floor(Math.random() * 10000) + 1
+                  return <div key={e.id} className="product_showdiv" onClick={()=>{
                     navigate(`/product/${e._id}`)
                   }} >
 
-                    {/* <div className="offer">
-                      <button className="offerbutton">{e.discount}%Off</button>
-                    </div> */}
-                    <div className="showdiv1">
+                    <div className="PS_img_div">
                    
                     <img className="img1" src={e.image} alt="" />
                     </div>
-                    <div className="nameprice">
-                    <p className="name">{e.name}</p>
-                    <div className="pricedivbutton">
-                      <div className="pricediv"><p className="price">₹{e.price}</p></div>
-                      <div className="addtocartbutton"><button className="button-62">See Details</button></div>
-                    </div>
-                    <div className="offer">
-                      <button className="offerbutton">{e.offer}%Off</button>
-                    </div>
-                    </div>
-                      
+                    <div className='PS_div_body'>
+                    <div className='PS_title'>{e.title}</div>
+                   
+                    <div className='PS_price' >₹{e.price} <span className='original_price' >{(e.price*(100-e.offer)/100)}</span>  <span className='discountp' >{e.offer}%Off</span> </div>
+                    
+                     <div className='rating_div' >⭐{ratings} ({buyers}) 
                      
+                     <p><span>Fshop </span> assured </p> </div>
+
+                    </div>
+
                    </div>
               })
           }
     </div>
+    <br />
+    <br />
+    <br />
     <Footer/>
     </>
   )

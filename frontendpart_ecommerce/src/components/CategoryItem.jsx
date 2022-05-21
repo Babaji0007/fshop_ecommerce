@@ -41,14 +41,14 @@ const Button = styled.button`
     cursor: pointer;
     font-weight: 600;
 `;
-
+// const p="/ProductShow"
 const CategoryItem = ({ item }) => {
   return (
     <Container>
       <Image src={item.img} />
       <Info>
         <Title>{item.title}</Title>
-        <Link to="/ProductShow" ><Button>SHOW NOW</Button> </Link>
+        <Link to={item.to} ><Button>SHOW NOW</Button> </Link>
       </Info>
     </Container>
   );

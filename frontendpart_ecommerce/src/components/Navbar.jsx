@@ -20,11 +20,11 @@ const Navbar = () => {
   },[])
   
   const getData=()=>{
-    axios.get(`http://localhost:2100/cart`).then((res)=>{
+    axios.get(`https://beckendfshop.herokuapp.com/cart`).then((res)=>{
       setData(res.data)
      
     })
-    
+    console.log(data.length)
   }
   return (
     <div className='navbar'>
