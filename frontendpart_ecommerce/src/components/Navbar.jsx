@@ -40,10 +40,10 @@ const Navbar = () => {
         <input className='navbar_search'  type="text" placeholder='search' /><SearchIcon/>
         
         </div> */}
-        <Link to="/ProductShow" style={{  color: "#fff", textDecoration: "none"}}><p>Products</p></Link>
         <Link to="/Men" style={{  color: "#fff", textDecoration: "none"}}><p>Mens</p></Link>
-        <Link to="/ProductShow" style={{  color: "#fff", textDecoration: "none"}}><p>Womens</p></Link>
-  
+        <Link to="/Women" style={{  color: "#fff", textDecoration: "none"}}><p>Womens</p></Link>
+        <Link to="/Kids" style={{  color: "#fff", textDecoration: "none"}}><p>Kids</p></Link>
+
         {/* <p>search</p> */}
     </div>
     <div>

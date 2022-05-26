@@ -9,7 +9,7 @@ import Navbar from '../components/Navbar'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../components/Footer'
 import SearchIcon from '@mui/icons-material/Search';
-const Todos = () => {
+const Kids = () => {
   const [search,setSeacrh] =useState("")
 const navigate=useNavigate()
     const dispatch=useDispatch()
@@ -19,7 +19,7 @@ const navigate=useNavigate()
     },[])
     // we r fetching data using this function
     const getData=()=>{
-        axios.get("https://beckendfshop.herokuapp.com/women").then((res)=>{
+        axios.get("https://beckendfshop.herokuapp.com/kids").then((res)=>{
         dispatch(addTodo(res.data))
         })
     }
@@ -108,7 +108,7 @@ const handleSort =(sort,value)=>{
                 let ratings=Math.floor(Math.random() * 5) + 1;
                 let buyers=Math.floor(Math.random() * 10000) + 1
                   return <div key={e.id} className="product_showdiv" onClick={()=>{
-                    navigate(`/product/${e._id}`)
+                    navigate(`/Kids/${e._id}`)
                   }} >
 
                     <div className="PS_img_div">
@@ -138,7 +138,7 @@ const handleSort =(sort,value)=>{
   )
 }
 
-export default Todos
+export default Kids
 
 // key={e.id}
 // <button onClick={()=>{

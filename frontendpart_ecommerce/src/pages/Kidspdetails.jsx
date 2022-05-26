@@ -10,7 +10,7 @@ import { addData } from '../redux/product/action';
 import { useNavigate } from 'react-router-dom';
 
 
-export const  ProductDetail  = () =>{
+export const Kidspdetails = () =>{
   const navigate = useNavigate()
   const disPatch=useDispatch();
 
@@ -20,7 +20,7 @@ export const  ProductDetail  = () =>{
     console.log(data)
     const {id} = useParams()
     useEffect(() => {
-      axios.get(`https://beckendfshop.herokuapp.com/women/${id}`)
+      axios.get(`https://beckendfshop.herokuapp.com/kids/${id}`)
       .then((res) => {
         setData(res.data)
         disPatch(addData(res.data))
