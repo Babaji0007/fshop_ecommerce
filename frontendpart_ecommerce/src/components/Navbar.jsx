@@ -22,6 +22,7 @@ const Navbar = () => {
   const getData=()=>{
     axios.get(`https://beckendfshop.herokuapp.com/cart`).then((res)=>{
       setData(res.data)
+      getData()
      
     })
     console.log(data.length)

@@ -31,7 +31,7 @@ export const Menpdetails = () =>{
 
 
     const postData=()=>{
-      axios.post(`https://beckendfshop.herokuapp.com/cart`,rstore).then(()=>{
+      axios.post(`https://beckendfshop.herokuapp.com/cart`,{...rstore,quantity:1}).then(()=>{
           alert("data added")
       })
   }

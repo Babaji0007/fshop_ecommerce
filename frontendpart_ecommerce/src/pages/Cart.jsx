@@ -1,16 +1,10 @@
-
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import React from 'react'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
+import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addData } from "../redux/product/action";
-import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
-
-
  const Cart = () => {
 
 const navigate  = useNavigate()
@@ -60,21 +54,7 @@ const deleteData=(id)=>{
     getData()
   })
 }
-// const increment = (e) => {
-//   e.quantity++;
-//   axios.patch(`https://beckendfshop.herokuapp.com/cart/${e.id}`, e).then(() => {
-//     getData()
-//   })
-// }
-// const decrement = (e) => {
-//   e.quantity--;
-//   if (!e.quantity) {
-//     deleteData(e.id)
-//   }
-//   axios.patch(`http://localhost:8080/cart/${e.id}`, e).then(() => {
-//     getData()
-//   })
-// }
+
 
  
  
@@ -85,8 +65,9 @@ const deleteData=(id)=>{
 
     
     <div>
-    <Navbar/>
-   
+        <br />
+        <br />
+        <br />
         <br />
  {data.map((data)=>{
    return <div className="cartpagemaindiv">
@@ -94,13 +75,13 @@ const deleteData=(id)=>{
      </div>
      
      <div className="cartpricedeletediv"> 
-      <div className="cartpricediv"> <p className="cartprice">{data.name}</p> </div> 
+      <div className="cartpricediv"> <p className="cartprice">{data.title}</p> </div> 
 
 
        <div className="cartp">
          <div className="cartp1"><p className="cartp1p">₹{data.price}</p></div>
-         <div className="cartp2"><p className="cartp2p">{data.discount}%Off</p></div>
-           <div className="cartp3"><p className="cartp3p">Hurry! <BoltOutlinedIcon/></p></div>
+         <div className="cartp2"><p className="cartp2p">{data.offer}%Off</p></div>
+         <div className="cartp3"><p className="cartp3p">Hurry! <BoltOutlinedIcon/></p></div>
          
        </div>
        
@@ -111,21 +92,24 @@ const deleteData=(id)=>{
       }}>Remove</button>
       </div>
       <div>
-        <button onClick={()=>{
-          navigate("/Checkout")
-        }}>Proceed to payment</button>
       </div>
       </div>
      </div>
+     
    </div>
 
  })}
 
+
+<div>
+<h1>Total price <span><p className="sum"></p></span></h1>
+        <button className="btn1" onClick={()=>{
+          navigate("/Checkout")
+        }}>Proceed to payment</button>
+      </div>
       
-<br />
-   <br />  
-   <Footer/> 
-   
+      
+      
     </div>
   );
 };

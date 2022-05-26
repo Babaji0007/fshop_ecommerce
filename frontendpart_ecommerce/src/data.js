@@ -26,19 +26,19 @@ export const sliderItems = [
       id: 1,
       img: "https://images.pexels.com/photos/1964970/pexels-photo-1964970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       title: "MEN's STYLE!",
-      to:"/ProductShow"
+      to:"/Men"
     },
     {
       id: 2,
       img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       title: "WOMEN's LOVE",
-      to:"/ProductShow"
+      to:"/Women"
     },
     {
       id: 3,
       img: "https://images.pexels.com/photos/35188/child-childrens-baby-children-s.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       title: "KID's JOY",
-      to:"/ProductShow"
+      to:"/Kids"
     },
   ];
   export const popularProducts = [
