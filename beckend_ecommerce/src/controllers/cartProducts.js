@@ -44,12 +44,12 @@ try {
     return res.status(500).send(err.message)
 }
 })
-// router.delete("",async(req,res)=>{
-//     try {
-//         const cart  = await Cart.findByIdAndDelete(req.params.id);
-//         return res.send(cart)
-//     } catch (err) {
-//         return res.status(500).send(err.message)
-//     }
-//     })
+router.delete("",async(req,res)=>{
+    try {
+        const cart  = await Cart.findByIdAndDelete(req.params.id);
+        return res.send(cart)
+    } catch (err) {
+        return res.status(500).send(err.message)
+    }
+    })
 module.exports=router
