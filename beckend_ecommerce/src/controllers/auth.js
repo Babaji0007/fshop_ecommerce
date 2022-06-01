@@ -31,14 +31,14 @@ const login = async (req, res) => {
     if (!user)
       return res
         .status(400)
-        .send({ message: "Please try another email or password------------" });
+        .send({ message: "Please try another email or password" });
 
     const match = user.checkPassword(req.body.password);
       console.log(match)
     if (!match)
       return res
         .status(400)
-        .send({ message: "Please try another email or password+++++++++++++" });
+        .send({ message: "Please try another email or password" });
 
     const token = newToken(user);
 
