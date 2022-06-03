@@ -20,16 +20,19 @@ useEffect(()=>{
 const increment = (e) => {
   e.quantity++;
   axios
-    .patch(`https://reactapp7559.herokuapp.com/cart/${e._id}`, e)
+    .patch(`https://beckendfshop.herokuapp.com/cart/${e._id}`, e)
     .then(() => {
       getData();
     });
 };
 const decrement = (e) => {
-  e.quantity--;
-  if (!e.quantity) {
-    deleteData(e._id);
+  if(e.quantity>1){
+    e.quantity--;
   }
+
+  // if (!e.quantity) {
+  //   deleteData(e._id);
+  // }
   axios
     .patch(`https://beckendfshop.herokuapp.com/cart/${e._id}`, e)
     .then(() => {
@@ -94,8 +97,8 @@ const deleteData=(id)=>{
 
        <div className="cartp">
          <div className="cartp1"><p className="cartp1p">₹{data.price*data.quantity}</p>
-         <div className="spanINc">
-                    <span
+         <div className="qty_updown">
+                    <span className="qty_updown_span"
                       onClick={() => {
                         increment(data);
                       }}
@@ -103,8 +106,8 @@ const deleteData=(id)=>{
                       {" "}
                       +{" "}
                     </span>
-                    <span>{data.quantity}</span>
-                    <span
+                    <span  >{data.quantity}</span>
+                    <span className="qty_updown_span"
                       onClick={() => {
                         decrement(data);
                       }}
@@ -112,14 +115,9 @@ const deleteData=(id)=>{
                       {" "}
                       -{" "}
                     </span>
+                    <p>Qty.</p>
                   </div>
-
-                  <div className="curB">
-                     
-                  </div>
-         
-         
-         
+                  <br />
          </div>
          <div className="cartp2"><p className="cartp2p">{data.offer}%Off</p></div>
          <div className="cartp3"><p className="cartp3p">Hurry! <BoltOutlinedIcon/></p></div>

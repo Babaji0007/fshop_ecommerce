@@ -12,6 +12,7 @@ import axios from "axios";
 
 
 const Navbar = ({status}) => {
+  console.log("log_status",status)
 // const[st, setSt]=useState(false)
   const [data,setData]=useState([])
 
@@ -23,7 +24,7 @@ const Navbar = ({status}) => {
   const getData=()=>{
     axios.get(`https://beckendfshop.herokuapp.com/cart`).then((res)=>{
       setData(res.data)
-        // getData()
+         getData()
      
     })
     console.log(data.length)

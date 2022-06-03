@@ -15,7 +15,9 @@ router.post("",async(req,res)=>{
 
 
 router.get("",async(req,res)=>{
+   
     try {
+        console.log("get ho gya")
         const cart  = await Cart.find().lean().exec();
         res.send(cart)
         
@@ -43,7 +45,23 @@ router.get("/:id",async(req,res)=>{
         return res.status(500).send(err.message)
     }
 })
-
+router.delete("/",async(req,res)=>{
+    console.log("working")
+    try {  const cartitems  = await Cart.find().lean().exec();
+     Promise.all(cartitems.map((item)=>{ 
+         return Cart.findByIdAndDelete(item._id)
+        }))
+     .then(()=>{
+         res.json({success:true,message:"cart is empty now"})
+     }) 
+    .catch((err)=>{
+        return res.status(500).send(err.message)
+    })
+    }
+    catch (err) {
+        return res.status(500).send(err.message)
+    }  
+})
 
 router.delete("/:id",async(req,res)=>{
 try {
@@ -53,13 +71,5 @@ try {
     return res.status(500).send(err.message)
 }
 })
-router.get("/delete",async(req,res)=>{
-    try {
-        products.cart.deleteMany({})
-        const cart  =await Cart.find().lean().exec();
-               return res.send(cart)
-    } catch (err) {
-        return res.status(500).send(err.message)
-    }
-    })
+
 module.exports=router
