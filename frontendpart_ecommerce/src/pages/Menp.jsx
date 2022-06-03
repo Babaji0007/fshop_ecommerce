@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, {useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {addTodo,delTodo} from "../redux/product/action"
+import {getMendata} from "../redux/product/action"
 import Navbar from '../components/Navbar'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../components/Footer'
@@ -14,13 +15,15 @@ const navigate=useNavigate()
     const todos=useSelector((store)=>(store.todo))
     useEffect(()=>{
     getData()
+   
     },[])
     // we r fetching data using this function
     const getData=()=>{
-        axios.get("https://beckendfshop.herokuapp.com/men").then((res)=>{
-        dispatch(addTodo(res.data))
-        })
-    }
+        // axios.get("https://beckendfshop.herokuapp.com/men").then((res)=>{
+        // dispatch(addTodo(res.data))
+        // })
+  dispatch( getMendata)
+      }
     
     const [change,setChange] =useState(false)
 

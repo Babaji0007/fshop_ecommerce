@@ -5,9 +5,10 @@ export const Success = () =>{
 
     const navigate = useNavigate();
     function handlePayment(){
-        for(let i=1;i<50;i++){
-            axios.delete(`https://beckendfshop.herokuapp.com/cart/${i}`)
-        }
+        // for(let i=1;i<50;i++){
+        //     axios.delete(`https://beckendfshop.herokuapp.com/cart/${i}`)
+        // }
+        axios.delete(`https://beckendfshop.herokuapp.com/delete`)
         navigate("/")
     }
     return (

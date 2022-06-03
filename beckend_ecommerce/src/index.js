@@ -19,6 +19,7 @@ app.use("/women",womenController)
 app.use("/men",menController)
 app.use("/kids",kidsController)
 app.use("/cart",CartController)
+app.use("/delete",CartController)
 
 app.listen(port,async function(){
     try {

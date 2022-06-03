@@ -1,5 +1,6 @@
-import { createStore} from "redux";
+import { createStore,applyMiddleware} from "redux";
 // import { calcreducer } from "./Increment/reducer";
+import thunk from "redux-thunk"
 import { todoreducer } from "./product/reducer";
 // import { headphonereducer } from "./Headphone/reducer";
 
@@ -7,4 +8,4 @@ import { todoreducer } from "./product/reducer";
 // export const store=createStore(reducer,{
 //     num:0
 // })
-export const store=createStore(todoreducer,window._REDUX_DEVTOOLS_EXTENSION_ && window._REDUX_DEVTOOLS_EXTENSION_())
+export const store=createStore(todoreducer,applyMiddleware(thunk))

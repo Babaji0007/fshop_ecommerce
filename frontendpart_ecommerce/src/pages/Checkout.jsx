@@ -2,6 +2,13 @@
 import { useNavigate } from 'react-router-dom';
 export const CheckOut = () =>{
   const navigate = useNavigate()
+const handlesubmit=(e)=>{
+ 
+    alert("Payment successful ")
+    navigate("/Success")
+}
+
+  
     return(<>
      <div class="mainscreen">
       <div class="card">
@@ -13,7 +20,7 @@ export const CheckOut = () =>{
           />
         </div>
         <div class="rightside">
-          <form action="">
+          <form onSubmit={handlesubmit}>
             <h1>CheckOut</h1>
             <h2>Payment Information</h2>
             <p>Cardholder Name</p>
@@ -37,10 +44,12 @@ export const CheckOut = () =>{
             <input type="password" class="inputbox" name="cvv" id="cvv" required />
         </div>
             <p></p>
-            <button type="submit" class="button"onClick={()=>{
-              navigate("/Success")
-              alert("Payment successful ")
-               }} >CheckOut</button>
+            <button type="submit" class="button"
+            // onClick={()=>{
+            //   navigate("/Success")
+            //   alert("Payment successful ")
+            //    }}
+                >CheckOut</button>
           </form>
         </div>
       </div>

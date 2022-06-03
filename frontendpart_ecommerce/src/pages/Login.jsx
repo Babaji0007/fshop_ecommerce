@@ -8,7 +8,7 @@ import Footer from "../components/Footer"
 
 
  const Login  = ()=>{
-
+  const[log,setLog]=useState(false)
     const  navigate =useNavigate()
     const [user,setUser] = useState({
        
@@ -36,8 +36,12 @@ import Footer from "../components/Footer"
 
     const login  =() =>{
         axios.post("https://beckendfshop.herokuapp.com/login",user)
-        .then(res=>{alert("login successful ")
-           
+        .then(res=>{
+            setLog(true)
+            // document.querySelector("hi_username").innerHTML=user.name
+            alert("login successful ")
+        //    let username=getElementById("hi_username").innerHTML
+        // 
                 navigate("/")
             }
            
@@ -52,7 +56,7 @@ import Footer from "../components/Footer"
 
     return(
         <div> 
-            <Navbar />
+            <Navbar status={log} />
             <br />
             <br />
             <br />

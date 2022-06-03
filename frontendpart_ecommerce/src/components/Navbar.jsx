@@ -11,21 +11,25 @@ import axios from "axios";
 
 
 
-const Navbar = () => {
-
+const Navbar = ({status}) => {
+// const[st, setSt]=useState(false)
   const [data,setData]=useState([])
 
   useEffect(()=>{
     getData()
   },[])
+
   
   const getData=()=>{
     axios.get(`https://beckendfshop.herokuapp.com/cart`).then((res)=>{
       setData(res.data)
-      getData()
+        // getData()
      
     })
     console.log(data.length)
+  }
+  if(status===true){
+  document.querySelector("login_status").innerHTML="LogOut"
   }
   return (
     <div className='navbar'>
@@ -34,7 +38,7 @@ const Navbar = () => {
        <p><span>Fshop</span> </p>
        </Link>
        <Link to="/" style={{  color: "#fff", textDecoration: "none"}}>
-        <p>Home</p>
+        <p className ="hi_username">Home</p>
         </Link>
         
         {/* <div className='navbar_search_icon_div' >
@@ -48,7 +52,7 @@ const Navbar = () => {
         {/* <p>search</p> */}
     </div>
     <div>
-    <Link to="/Login" style={{  color: "#fff", textDecoration: "none"}} ><p>LogIn</p></Link>
+    <Link to="/Login" style={{  color: "#fff", textDecoration: "none"}} ><p className='login_status' >LogIn</p></Link>
     <Link to="/Signup" style={{  color: "#fff", textDecoration: "none"}} ><p>SignUp</p></Link>
        
        

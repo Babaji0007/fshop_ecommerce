@@ -251,10 +251,11 @@ border-radius: 10px;
 .cartpagemaindiv{
   /* float: left; */
   display:flex;
-  width: 100%;
+  width: 1100px;
   height: 200px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 20px;
+  /* overflow:scroll; */
  }
  .cart-imagediv{
   width: 180px;
@@ -628,4 +629,16 @@ cursor: pointer;
 border: none;
 color: green;
 background-color: turquoise;
+}
+
+.btn_qty_cart{
+  display: flex;
+}
+.cart_price_sum-box{
+  /* border: 1px solid black; */
+  width: 60vh;
+  padding: 100px;
+  text-align: center;
+  /* margin-left: 70px; */
+  
 }

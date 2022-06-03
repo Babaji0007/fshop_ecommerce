@@ -5,6 +5,8 @@ import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addData } from "../redux/product/action";
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
  const Cart = () => {
 
 const navigate  = useNavigate()
@@ -15,15 +17,25 @@ useEffect(()=>{
   getData()
 },[])
 
-// let sum =0;
-// useEffect(()=>{
-  
-//   for( let key in data){
-//     sum+=data[key].price;
-//     console.log("sum1",sum)
-//   }
-// },[])
-// console.log("sum",sum)
+const increment = (e) => {
+  e.quantity++;
+  axios
+    .patch(`https://reactapp7559.herokuapp.com/cart/${e._id}`, e)
+    .then(() => {
+      getData();
+    });
+};
+const decrement = (e) => {
+  e.quantity--;
+  if (!e.quantity) {
+    deleteData(e._id);
+  }
+  axios
+    .patch(`https://beckendfshop.herokuapp.com/cart/${e._id}`, e)
+    .then(() => {
+      getData();
+    });
+};
  
 const dispatch = useDispatch()
 console.log("Totalprice",count)
@@ -33,7 +45,7 @@ const getData=()=>{
     var sum  =0;
     setData(e.data)
     dispatch(addData(e.data))
-     
+  
     for (let i = 0; i < e.data.length; i++) {
       sum += e.data[i].price * e.data[i].quantity;
     }
@@ -64,13 +76,15 @@ const deleteData=(id)=>{
   return (
 
     
-    <div>
+ <div >
+      <Navbar/>
+      <div className="cart_box" style={{display:"flex"}}>
+     <div className="cart_item"style={{overflow:"scroll",height:"600px"}} >
+     
         <br />
-        <br />
-        <br />
-        <br />
- {data.map((data)=>{
-   return <div className="cartpagemaindiv">
+  {data.map((data)=>{
+   return (
+   <div className="cartpagemaindiv" >
      <div className="cart-imagediv"> <img className="cart-image" src={data.image} alt="" />
      </div>
      
@@ -79,38 +93,72 @@ const deleteData=(id)=>{
 
 
        <div className="cartp">
-         <div className="cartp1"><p className="cartp1p">₹{data.price}</p></div>
+         <div className="cartp1"><p className="cartp1p">₹{data.price*data.quantity}</p>
+         <div className="spanINc">
+                    <span
+                      onClick={() => {
+                        increment(data);
+                      }}
+                    >
+                      {" "}
+                      +{" "}
+                    </span>
+                    <span>{data.quantity}</span>
+                    <span
+                      onClick={() => {
+                        decrement(data);
+                      }}
+                    >
+                      {" "}
+                      -{" "}
+                    </span>
+                  </div>
+
+                  <div className="curB">
+                     
+                  </div>
+         
+         
+         
+         </div>
          <div className="cartp2"><p className="cartp2p">{data.offer}%Off</p></div>
          <div className="cartp3"><p className="cartp3p">Hurry! <BoltOutlinedIcon/></p></div>
          
        </div>
        
        <div className="buttonforcheckout">
-         <div>
+         <div className="btn_qty_cart" >
        <button className="remove" onClick={()=>{
      deleteData(data._id)
       }}>Remove</button>
-      </div>
+      {/* <p style={{color:"black",margin:"10px"}} >quantity</p>
+      <select id="qty.">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+
+      </select> */}
+            </div>
       <div>
       </div>
       </div>
      </div>
      
-   </div>
+   </div>)
 
  })}
+</div>
 
-
-<div>
-<h1>Total price <span><p className="sum"></p></span></h1>
+ <div className="cart_price_sum-box">
+      <h1 style={{fontSize: "xxx-large" }} >Total price <span style={{backgroundColour:"white", color:"black"}}><p className="sum"></p></span></h1>
         <button className="btn1" onClick={()=>{
           navigate("/Checkout")
         }}>Proceed to payment</button>
-      </div>
-      
-      
-      
-    </div>
+ </div>
+ </div>   
+      <br />
+      <Footer/>
+</div>
   );
 };
 export default Cart
