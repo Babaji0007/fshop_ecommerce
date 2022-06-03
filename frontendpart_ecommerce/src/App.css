@@ -108,10 +108,12 @@ align-items: center;
  /* padding: 10px; */
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   /* transition: 0.5s; */
+  height: 540px;
   /* border: 1px solid rgb(142, 137, 142); */
 }
 .productShow_container{
   display: grid;
+
   /* margin-left: 1%;
   margin-right: 1%; */
   grid-template-columns: repeat(4,1fr);

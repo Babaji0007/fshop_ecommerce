@@ -8,7 +8,7 @@ export const Success = () =>{
         axios.delete(`https://beckendfshop.herokuapp.com/cart/`).then(()=>{
             console.log("cart is empty now")
           })
-        navigate("/")
+        navigate("/home")
     }
     return (
         
