@@ -19,12 +19,12 @@ const Router = () => {
   return (
     <div>
     <Routes>
-    <Route path='/' element={<Home/>} />
+    <Route path='/home' element={<Home/>} />
     <Route path="men/:id" element={<Menpdetails/>}></Route>
     <Route path="kids/:id" element={<Kidspdetails/>}></Route>
     <Route path="women/:id" element={<Womenpdetals/>}></Route>
     
-    <Route path='/Login' element={<Login/>} />
+    <Route path='/' element={<Login/>} />
     <Route path='/Signup' element={<Signup/>} />
     <Route path='/Kids' element={<Kids/>} />
     <Route path='/Men' element={<Men/>} />

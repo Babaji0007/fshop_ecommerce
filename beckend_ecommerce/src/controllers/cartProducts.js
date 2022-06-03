@@ -4,7 +4,7 @@ const Cart = require("../modal/cartModel")
 
 router.post("",async(req,res)=>{
     try {
-        //     const product = await Headphone .create(req.body);
+        
         const cart = await Cart.create(req.body);
         res.send(cart)
         
@@ -72,4 +72,7 @@ try {
 }
 })
 
+
 module.exports=router
+
+

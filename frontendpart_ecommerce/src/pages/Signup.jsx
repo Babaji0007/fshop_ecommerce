@@ -6,6 +6,7 @@ import  React, { useState } from "react"
 import axios from "axios"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import Head from "../components/Head"
 
 
 
@@ -42,7 +43,7 @@ import Footer from "../components/Footer"
            
             axios.post("https://beckendfshop.herokuapp.com/register",user).then(res=>{
                 alert("register succesfull")
-              navigate("/login")
+              navigate("/")
         
         })
            
@@ -55,7 +56,7 @@ import Footer from "../components/Footer"
 
     return(
     <div>
-      <Navbar/>
+      <Head/>
         
         <br />
         <br />
@@ -87,7 +88,7 @@ import Footer from "../components/Footer"
             <br />
             <br />
             <label className="label" htmlFor="">Already have account ?</label>
-            <Link className="link" to="/login">Login</Link>
+            <Link className="link" to="/">Login</Link>
             {/* <button className="r4">Log in</button> */}
             
             </div>

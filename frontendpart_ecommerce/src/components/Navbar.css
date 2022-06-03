@@ -49,6 +49,11 @@
 
 
   }
+  .logbtn{
+    display: block;
+    font-size: large;
+    font-weight: 400;
+  }
   
   
   

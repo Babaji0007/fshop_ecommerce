@@ -11,7 +11,7 @@ const register = async (req, res) => {
     let user = await User.findOne({ email: req.body.email }).lean().exec();
 
     if (user)
-      return res.status(400).send({ message: "Please try another email" });
+      return res.status(400).send({ message: "Please try another email or password" });
 
     user = await User.create(req.body);
     
@@ -31,14 +31,14 @@ const login = async (req, res) => {
     if (!user)
       return res
         .status(400)
-        .send({ message: "Please try another email or password------------" });
+        .send({ message: "Please try another email or password" });
 
     const match = user.checkPassword(req.body.password);
       console.log(match)
     if (!match)
       return res
         .status(400)
-        .send({ message: "Please try another email or password+++++++++++++" });
+        .send({ message: "Please try another email or password" });
 
     const token = newToken(user);
 

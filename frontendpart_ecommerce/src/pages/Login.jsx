@@ -2,34 +2,27 @@ import  React , {useState} from "react"
 import {Link}  from "react-router-dom"
  import axios  from "axios"
 import { useNavigate } from "react-router-dom"
-import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import Navbar from "../components/Navbar"
+import Head from "../components/Head"
 
 
 
  const Login  = ()=>{
-  const[log,setLog]=useState("logout")
-  console.log("loginpage_status",)
+
     const  navigate =useNavigate()
-    const [user,setUser] = useState({
-       
+    const [user,setUser] = useState({  
         email:"",
         password:""
     })
 
     const handleChange =e=>{
         const{name,value} =e.target
-        
-
-      
-       
+  
         setUser({
             ...user,
             [name]:value,
-           
-           
-           
-           
+
         })
     }
 
@@ -38,12 +31,9 @@ import Footer from "../components/Footer"
     const login  =() =>{
         axios.post("https://beckendfshop.herokuapp.com/login",user)
         .then(res=>{
-            setLog("login")
-            // document.querySelector("hi_username").innerHTML=user.name
+            // localStorage.setItem("token",res.user)
             alert("login successful ")
-        //    let username=getElementById("hi_username").innerHTML
-        // 
-                navigate("/")
+                navigate("/home")
             }
            
         
@@ -57,7 +47,7 @@ import Footer from "../components/Footer"
 
     return(
         <div> 
-            <Navbar status={log} />
+            <Head />
             <br />
             <br />
             <br />

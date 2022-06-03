@@ -11,8 +11,8 @@ import axios from "axios";
 
 
 
-const Navbar = ({status}) => {
-  console.log("log_status",status)
+const Navbar = () => {
+
 // const[st, setSt]=useState(false)
   const [data,setData]=useState([])
 
@@ -20,25 +20,28 @@ const Navbar = ({status}) => {
     getData()
   },[])
 
-  
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location = "/";
+
+  };
+
   const getData=()=>{
     axios.get(`https://beckendfshop.herokuapp.com/cart`).then((res)=>{
       setData(res.data)
-         getData()
+          getData()
      
     })
     console.log(data.length)
   }
-  if(status===true){
-  document.querySelector("login_status").innerHTML="LogOut"
-  }
+
   return (
     <div className='navbar'>
     <div>
-       <Link to="/" style={{  color: "#fff", textDecoration: "none"}}>
+       <Link to="/home" style={{  color: "#fff", textDecoration: "none"}}>
        <p><span>Fshop</span> </p>
        </Link>
-       <Link to="/" style={{  color: "#fff", textDecoration: "none"}}>
+       <Link to="/home" style={{  color: "#fff", textDecoration: "none"}}>
         <p className ="hi_username">Home</p>
         </Link>
         
@@ -53,8 +56,12 @@ const Navbar = ({status}) => {
         {/* <p>search</p> */}
     </div>
     <div>
-    <Link to="/Login" style={{  color: "#fff", textDecoration: "none"}} ><p className='login_status' >LogIn</p></Link>
-    <Link to="/Signup" style={{  color: "#fff", textDecoration: "none"}} ><p>SignUp</p></Link>
+    {/* <Link to="/Login" style={{  color: "#fff", textDecoration: "none"}} ><p className='login_status' onClick={handleLogout()} >LogIn</p></Link> */}
+    <button className='logbtn' style={{  color: "#fff", textDecoration: "none",backgroundColor:"black"}} onClick={handleLogout}>
+             Logout
+              </button>
+
+    {/* <Link to="/Signup" style={{  color: "#fff", textDecoration: "none"}} ><p>SignUp</p></Link> */}
        
        
         <Link to ="/Cart"   >
